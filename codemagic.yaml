@@ -1,0 +1,16 @@
+workflows:
+  shankara-android:
+    name: SHANKARA HEALING MUSIC - Android APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+    scripts:
+      - name: Generate Android platform files
+        script: flutter create --platforms=android .
+      - name: Install Flutter dependencies
+        script: flutter pub get
+      - name: Build test APK
+        script: flutter build apk --debug
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
